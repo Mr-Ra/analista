@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo de Documentos y Histórico</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Análisis de Documentos -->
+        <section class="analysis-section">
+            <h1>Análisis de Documentos</h1>
+            <form id="uploadForm">
+                <label for="fileInput">Sube tu documento (PDF, JPG, PNG):</label>
+                <input type="file" id="fileInput" accept=".pdf, .jpg, .png" required>
+                <button type="submit">Analizar</button>
+            </form>
+
+            <div id="fileViewer" class="viewer">
+                <!-- <h3>Visualizador de Documento</h3> -->
+                <div id="viewerContainer">
+                    <!-- Aquí se carga el documento (PDF o imagen) -->
+                </div>
+            </div>
+
+            <div id="result" class="result">
+                <h3>Resultados del Análisis</h3>
+                <div id="extractionResults"></div>
+                <div id="analysisResults"></div>
+            </div>
+        </section>
+
+        <!-- Histórico -->
+        <section class="history-section">
+            <h1>Histórico de Eventos</h1>
+            <form id="filterForm">
+                <label for="typeFilter">Tipo de Evento:</label>
+                <select id="typeFilter" required>
+                    <option value="CSV Upload">CSV Upload</option>
+                    <option value="AI">AI</option>
+                </select>
+
+                <label for="startDate">Fecha de inicio:</label>
+                <input type="date" id="startDate">
+
+                <label for="endDate">Fecha final:</label>
+                <input type="date" id="endDate">
+
+                <button type="submit">Filtrar</button>
+            </form>
+            <button id="exportButton">Exportar a Excel</button>
+
+            <div id="history" class="result">
+                <h3>Logs de Eventos</h3>
+                <div id="eventLogs"></div>
+            </div>
+        </section>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

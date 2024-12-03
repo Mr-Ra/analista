@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+  s3-storage:
+    image: localstack/localstack:0.12.5
+    environment:
+      - SERVICES=s3
+      - DEBUG=1
+      - DEFAULT_REGION=eu-west-1
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+    ports:
+      - "4566:4566" # Puerto principal para interactuar con los servicios
+    volumes:
+      # Inicializa un bucket al iniciar el contenedor
+      - './volumes/s3-storage/.init:/docker-entrypoint-initaws.d'
+      # Directorio localstack para datos temporales
+      - './volumes/s3-storage/.localstack:/tmp/localstack'
